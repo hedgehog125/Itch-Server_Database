@@ -1,11 +1,17 @@
+// + = Add.
+// * = Fix.
+// - = Remove.
+// / = Change.
+
 // TODO:
 //	+ Allow reporter blocks to go in inputs. <- Done.
 //  + Header blocks. <- Done.
 //	+ More blocks/categories. <- Done.
-//  * Fix reporter blocks with arguments. <- Done.
+//  * Reporter blocks with arguments. <- Done.
+//  / Filing of the files (on the online version). <- Doing.
+//	+ Project compilation.  <- Doing.
 //	+ Be able to make sprites.
 //  + The rest of the blocks.
-//	+ Project compilation.  <- I think I know how I'll do this.
 //	+ Be able to import costumes.
 //	+ Be able to import sounds.
 //	+ Script scrollbar.
@@ -87,7 +93,7 @@ Project = defaultProject
 
 
 function save() {
-	post("/serverside/saveproject",{
+	post("/serverside/project/save",{
 	"Name": User,
 	"Pass": getCookie("Pass"),
 	"ProjectId": id,
@@ -313,7 +319,19 @@ function block(id,x,y,args, outline) {
 
 	if (Blocks[id]["type"] == "Header") {
 		CanvasController.setFillColour(colours[Blocks[id]["cat"]])
-		CanvasController.fillRect(x + 2, y - 3, ((X  - x) / 1.2), 4)
+		CanvasController.fillRect(x + ((X  - x) / 5), y - 3.5, ((X  - x) / 1.7), 4)
+		ctx.lineWidth = 1
+		ctx.beginPath()
+		ctx.moveTo(scaleX(x + ((X  - x) / 5) + 1), scaleY(y + 0.5))
+		ctx.lineTo(scaleX(x + ((X  - x) / 10)), scaleY(y + 0.5))
+		ctx.lineTo(scaleX(x + ((X  - x) / 5) + 1), scaleY(y - 3.8))
+		ctx.fill()
+		
+		ctx.beginPath()
+		ctx.moveTo(scaleX(((x + ((X  - x) / 5)) + ((X  - x) / 1.7)) - 1), scaleY(y + 0.5))
+		ctx.lineTo(scaleX((((x + ((X  - x) / 5)) + ((X  - x) / 1.7)) - 1) + 5), scaleY(y + 0.5))
+		ctx.lineTo(scaleX(((x + ((X  - x) / 5)) + ((X  - x) / 1.7)) - 1), scaleY(y - 3.8))
+		ctx.fill()
 	}
 	if (MouseX >= x & MouseX <= X) {
 		if (MouseY >= y & MouseY <= y + 5) {

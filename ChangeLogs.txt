@@ -1,1 +1,1 @@
-{}
+{'1.0a': ['The first official alpha version. <br>\nThere were versions before this one but, they were before the database. This is the first one that uses the database. <br>\n<br>\n<br>\n<b>Changes:</b> <br>\n<br>\n+ = Add. <br>\n* = Fix. <br>\n- = Remove. <br>\n/ = Change. <br>\n<br>\n<br>\n+ AutoUpdate v2. <br>\n/ The look of header blocks. <br>\n/ A few technical changes. <br>']}
