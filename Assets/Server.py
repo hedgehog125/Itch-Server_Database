@@ -171,17 +171,17 @@ def defaultFind(path):
 	Path = path
 	lookPath = urllib.parse.unquote(path)
 	if len(lookPath.split("/")[-1].split(".")) == 1:
-		open(lookPath + ".html")
-		return default + " \n".join(Open_File(lookPath + ".html"))
+		open("Assets/" + lookPath + ".html")
+		return default + " \n".join(Open_File("Assets/" + lookPath + ".html"))
 	else:
 		if lookPath.split("/")[-1].split(".")[1] == "json":
-			file = " \n".join(Open_File(lookPath))
+			file = " \n".join(Open_File("Assets/" + lookPath))
 			if file != "404: File not found.":
 				return " \n".join(JSON(ast.literal_eval(file)))
 			else:
 				return file
 		else:
-			return Open_File(lookPath,False,"",True)
+			return Open_File("Assets/" + lookPath,False,"",True)
 	
 
 			
